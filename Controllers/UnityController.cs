@@ -17,6 +17,76 @@ namespace SOF005_Tarea4.Controllers
 
 
 
+        private double ConvertirData(double cantidadAconvertir, Dato unidadOrigen, Longitud unidadDestino)
+        {
+
+            // En esta funcion se escogio el BYTE como unidad base
+
+            if (unidadOrigen == unidadDestino)
+            {
+                return cantidadAconvertir;
+            }
+
+            switch (unidadOrigen)
+            {
+
+                case Dato.BIT:
+                    cantidadAconvertir = cantidadAconvertir / 8;
+                    break;
+
+                case Dato.KILOBYTE:
+                    cantidadAconvertir = cantidadAconvertir * 1000;
+                    break;
+
+
+                case Dato.MEGABYTE:
+                    cantidadAconvertir = cantidadAconvertir * Math.Pow(10, 6);
+                    break;
+
+                case Dato.GIGABYTE:
+                    cantidadAconvertir = cantidadAconvertir * Math.Pow(10, 9);
+                    break;
+
+           
+                
+                case Dato.TERABYTE
+                    cantidadAconveritr= cantidadAconvertir * Math.Pow(10, 12);
+                    break;
+
+            }
+
+
+            switch (unidadDestino)
+            {
+
+                case Dato.BIT:
+                    return cantidadAconvertir = cantidadAconvertir * 8;
+                 
+
+                case Dato.KILOBYTE:
+                   return cantidadAconvertir = cantidadAconvertir / 1000;
+                   
+
+                case Dato.MEGABYTE:
+                   return cantidadAconvertir = cantidadAconvertir * Math.Pow(10, -6);
+
+
+
+                case Dato.MEGABYTE:
+                    cantidadAconvertir = cantidadAconvertir * Math.Pow(10, -9);
+                    break;
+
+                case Dato.TERABYTE
+                    return cantidadAconvertir= cantidadAconvertir * Math.Pow(10, -12);
+                    
+
+            }
+
+
+
+
+
+        }
 
 
 
@@ -49,22 +119,8 @@ namespace SOF005_Tarea4.Controllers
 
 
 
-            switch (unidadOrigen)
-            {
-
-                case Masa.GRAMO:
-                    cantidadAconvertir = cantidadAconvertir / 1000;
-                    break;
-
-                case Masa.ONZA:
-                    cantidadAconvertir = cantidadAconvertir / 35.274;
-                    break;
-
-                case Masa.LIBRA:
-                    cantidadAconvertir = cantidadAconvertir / 2.205;
-                    break;
-
-            }
+            
+            
 
 
             switch (unidadDestino)
@@ -233,5 +289,12 @@ namespace SOF005_Tarea4.Controllers
     {
         CENTIMETRO,PIE,PULGADAS,METRO,KILOMETRO,MILLA    
     }
+
+    public enum Dato
+    {
+        BIT,BYTE,KILOBYTE,MEGABYTE,GIGABYTE,TERABYTE
+    }
+
+
 
 }
