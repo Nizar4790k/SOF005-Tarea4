@@ -14,21 +14,37 @@ namespace SOF005_Tarea4.Controllers
             return View();
         }
 
+        public ActionResult Calculator()
+        {
+
+            ViewBag.unidad = Request.Form["unidad"];
 
 
+            return View();
+        }
 
-        private double ConvertirData(double cantidadAconvertir, Dato unidadOrigen, Longitud unidadDestino)
+        public ActionResult Result()
+        {
+            return View();
+        }
+
+        
+
+
+        private double ConvertirData(double cantidadAconvertir, Dato unidadOrigen, Dato unidadDestino)
         {
 
             // En esta funcion se escogio el BYTE como unidad base
 
             if (unidadOrigen == unidadDestino)
             {
+               
                 return cantidadAconvertir;
             }
 
             switch (unidadOrigen)
             {
+              
 
                 case Dato.BIT:
                     cantidadAconvertir = cantidadAconvertir / 8;
@@ -47,10 +63,10 @@ namespace SOF005_Tarea4.Controllers
                     cantidadAconvertir = cantidadAconvertir * Math.Pow(10, 9);
                     break;
 
-           
-                
-                case Dato.TERABYTE
-                    cantidadAconveritr= cantidadAconvertir * Math.Pow(10, 12);
+
+
+                case Dato.TERABYTE:
+                    cantidadAconvertir= cantidadAconvertir * Math.Pow(10, 12);
                     break;
 
             }
@@ -67,20 +83,22 @@ namespace SOF005_Tarea4.Controllers
                    return cantidadAconvertir = cantidadAconvertir / 1000;
                    
 
-                case Dato.MEGABYTE:
+                case Dato.GIGABYTE:
                    return cantidadAconvertir = cantidadAconvertir * Math.Pow(10, -6);
 
 
-
                 case Dato.MEGABYTE:
-                    cantidadAconvertir = cantidadAconvertir * Math.Pow(10, -9);
-                    break;
+                   return cantidadAconvertir = cantidadAconvertir * Math.Pow(10, -9);
 
-                case Dato.TERABYTE
+
+                case Dato.TERABYTE:
                     return cantidadAconvertir= cantidadAconvertir * Math.Pow(10, -12);
                     
 
             }
+
+
+            return cantidadAconvertir;
 
 
 
@@ -89,8 +107,80 @@ namespace SOF005_Tarea4.Controllers
         }
 
 
+        private double ConvertirLongitud(double cantidadAconvertir, Longitud unidadOrigen, Longitud unidadDestino)
+        {
 
-        private double ConvertirLongitud(double cantiadadAconveritr,Longitud unidadOrigen, Longitud unidadDestino)
+            // En esta funcion se escogio el KILOGRAMO como unidad base
+
+            if (unidadOrigen == unidadDestino)
+            {
+                return cantidadAconvertir;
+            }
+
+            switch (unidadOrigen)
+            {
+
+                case Longitud.CENTIMETRO:
+                    cantidadAconvertir = cantidadAconvertir / 100;
+                    break;
+
+                case Longitud.KILOMETRO:
+                    cantidadAconvertir = cantidadAconvertir * 1000;
+                    break;
+
+                case Longitud.MILLA:
+                    cantidadAconvertir = cantidadAconvertir * 1609;
+                    break;
+
+                case Longitud.PULGADAS:
+                    cantidadAconvertir = cantidadAconvertir / 39.37;
+                    break;
+
+                case Longitud.PIE:
+                    cantidadAconvertir = cantidadAconvertir / 3.281;
+                    break;
+
+
+            }
+
+
+
+
+            switch (unidadDestino)
+            {
+
+                case Longitud.CENTIMETRO:
+                    cantidadAconvertir = cantidadAconvertir * 100;
+                    break;
+
+                case Longitud.KILOMETRO:
+                    cantidadAconvertir = cantidadAconvertir / 1000;
+                    break;
+
+                case Longitud.MILLA:
+                    cantidadAconvertir = cantidadAconvertir / 1609;
+                    break;
+
+                case Longitud.PULGADAS:
+                    cantidadAconvertir = cantidadAconvertir * 39.37;
+                    break;
+
+                case Longitud.PIE:
+                    cantidadAconvertir = cantidadAconvertir * 3.281;
+                    break;
+
+
+            }
+
+
+            return cantidadAconvertir;
+
+        }
+
+
+
+
+        private double ConvertirMasa(double cantidadAconvertir,Masa unidadOrigen, Masa unidadDestino)
         {
 
             // En esta funcion se escogio el METRO como unidad base
@@ -148,80 +238,6 @@ namespace SOF005_Tarea4.Controllers
 
         }
 
-
-
-
-
-        private double ConvertirMasa(double cantidadAconvertir, Masa unidadOrigen, Masa unidadDestino)
-        {
-
-            // En esta funcion se escogio el KILOGRAMO como unidad base
-
-            if (unidadOrigen == unidadDestino)
-            {
-                return cantidadAconvertir;
-            }
-
-            switch (unidadOrigen)
-            {
-
-                case Longitud.CENTIMETRO:
-                    cantidadAconvertir = cantidadAconvertir/100;
-                    break;
-
-                case Longitud.KILOMETRO:
-                    cantidadAconvertir = cantidadAconvertir * 1000;
-                    break;
-
-                case Longitud.MILLA:
-                    cantidadAconvertir = cantidadAconvertir * 1609;
-                    break;
-
-                case Longitud.PULGADAS:
-                    cantidadAconvertir = cantidadAconvertir / 39.37;
-                    break;
-
-                case Longitud.PIE:
-                    cantidadAconvertir = cantidadAconvertir / 3.281;
-                    break;
-
-
-            }
-
-
-
-
-            switch (unidadDestino)
-            {
-
-                case Longitud.CENTIMETRO:
-                    cantidadAconvertir = cantidadAconvertir * 100;
-                    break;
-
-                case Longitud.KILOMETRO:
-                    cantidadAconvertir = cantidadAconvertir / 1000;
-                    break;
-
-                case Longitud.MILLA:
-                    cantidadAconvertir = cantidadAconvertir / 1609;
-                    break;
-
-                case Longitud.PULGADAS:
-                    cantidadAconvertir = cantidadAconvertir * 39.37;
-                    break;
-
-                case Longitud.PIE:
-                    cantidadAconvertir = cantidadAconvertir * 3.281;
-                    break;
-
-
-            }
-
-
-            return cantidadAconvertir;
-
-        }
-        
 
 
         

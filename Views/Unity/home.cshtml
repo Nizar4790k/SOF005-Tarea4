@@ -9,14 +9,50 @@
 
  </head>
 
-  <body>
+ <body>
 
-      <h2>Conversor de unidades</h2>
+     <h2>Conversor de unidades</h2><br />
+
+     Indique que tipo de unidades quiere convertir<br />
+
+     @using (Html.BeginForm("Calculator", "Unity", FormMethod.Post))
+     {
+
+         <div>
+             @Html.Label("Longitud")
+             @Html.RadioButton("unidad", "LONGITUD")
+
+         </div>
+
+         <div>
+             @Html.Label("Temperatura")
+             @Html.RadioButton("unidad", "TEMPERATURA")
+
+         </div>
+
+         <div>
+             @Html.Label("Masa")
+             @Html.RadioButton("unidad", "MASA")
+
+         </div>
+
+         <div>
+             @Html.Label("Datos")
+             @Html.RadioButton("unidad", "DATOS")
+
+         </div>
+
+         <input type="submit" value="Enviar" />
+
+
+     }
 
 
 
 
-  </body>
+
+
+ </body>
 
 
 
