@@ -15,8 +15,89 @@ namespace SOF005_Tarea4.Controllers
         }
 
 
+
+
+
+
+
+        private double ConvertirMasa(double cantidadAconvertir, Masa unidadOrigen, Masa unidadDestino)
+        {
+
+            // En esta funcion se escogio el KILOGRAMO como unidad base
+
+            if (unidadOrigen == unidadDestino)
+            {
+                return cantidadAconvertir;
+            }
+
+            switch (unidadOrigen)
+            {
+
+                case Masa.GRAMO:
+                    cantidadAconvertir = cantidadAconvertir/1000;
+                    break;
+
+                case Masa.ONZA:
+                    cantidadAconvertir = cantidadAconvertir / 35.274;
+                    break;
+
+                case Masa.LIBRA:
+                    cantidadAconvertir = cantidadAconvertir / 2.205;
+                    break;
+
+            }
+
+
+
+            switch (unidadOrigen)
+            {
+
+                case Masa.GRAMO:
+                    cantidadAconvertir = cantidadAconvertir / 1000;
+                    break;
+
+                case Masa.ONZA:
+                    cantidadAconvertir = cantidadAconvertir / 35.274;
+                    break;
+
+                case Masa.LIBRA:
+                    cantidadAconvertir = cantidadAconvertir / 2.205;
+                    break;
+
+            }
+
+
+            switch (unidadDestino)
+            {
+
+                case Masa.GRAMO:
+                     return cantidadAconvertir = cantidadAconvertir * 1000;
+                 
+
+                case Masa.ONZA:
+                    return cantidadAconvertir = cantidadAconvertir * 35.274;
+                    break;
+
+                case Masa.LIBRA:
+                   return  cantidadAconvertir = cantidadAconvertir * 2.205;
+                 
+
+            }
+
+
+            return cantidadAconvertir;
+
+        }
+        
+
+
+        
+
         private double ConvertirTemperatura(double cantidadAConvertir,Temperatura unidadOrigen,Temperatura unidadDestino)
         {
+
+            // En esta funcion se escogio Celcius como unidad base
+
 
             if (unidadOrigen == unidadDestino)
             {
@@ -64,6 +145,11 @@ namespace SOF005_Tarea4.Controllers
     public enum Temperatura
     {
         CELCIUS,KELVIN,FARENHEIT
+    }
+
+    public enum Masa
+    {
+        GRAMO,KILOGRAMO,ONZA,LIBRA
     }
 
 }
