@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SOF005_Tarea4.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,24 +9,77 @@ namespace SOF005_Tarea4.Controllers
 {
     public class UnityController : Controller
     {
+
+
+        private static  Conversion sConversion = new Conversion();
+
         // GET: Unity
         public ActionResult Home()
         {
             return View();
         }
 
-        public ActionResult Calculator()
+        public ActionResult Calculator(Conversion conversion)
         {
+            sConversion.Tipo = conversion.Tipo;
 
-            ViewBag.unidad = Request.Form["unidad"];
-
-
-            return View();
+            return View(conversion);
         }
 
-        public ActionResult Result()
+        public ActionResult Result(Conversion conversion)
         {
-            return View();
+            string unidadFinal = conversion.UnidadFinal;
+
+
+            string unidadInicial = conversion.UnidadInicial;
+         
+
+            double cantidadInicial = conversion.CantidadInicial;
+
+            conversion.Tipo = sConversion.Tipo;
+
+            switch (conversion.Tipo)
+            {
+
+                case "TEMPERATURA":
+                    Temperatura temperaturaInicial = (Temperatura)Enum.Parse(typeof(Temperatura),unidadInicial);
+                    Temperatura temperaturaFinal = (Temperatura) Enum.Parse(typeof(Temperatura), unidadFinal);
+                    conversion.CantidadFinal = ConvertirTemperatura(cantidadInicial, temperaturaInicial, temperaturaFinal);
+                    break;
+
+                case "MASA":
+
+                    Masa masaInicial = (Masa) Enum.Parse(typeof(Masa),unidadInicial);
+                    Masa masaFinal = (Masa) Enum.Parse(typeof(Masa),unidadFinal);
+
+                    conversion.CantidadFinal = ConvertirMasa(cantidadInicial, masaInicial, masaFinal);
+
+                    break;
+
+                case "LONGITUD":
+
+                    Longitud longitudInicial = (Longitud)Enum.Parse(typeof(Longitud),unidadInicial);
+                    Longitud longitudFinal = (Longitud) Enum.Parse(typeof(Longitud), unidadFinal);
+
+                    conversion.CantidadFinal = ConvertirLongitud(cantidadInicial, longitudInicial, longitudFinal);
+
+                    break;
+
+                case "DATOS":
+
+                    Dato datoInicial = (Dato)Enum.Parse(typeof(Dato), unidadInicial);
+                    Dato datoFinal = (Dato) Enum.Parse(typeof(Dato), unidadFinal);
+
+                    conversion.CantidadFinal = ConvertirData(cantidadInicial, datoInicial, datoFinal) ;
+
+                    break;
+
+
+
+            }
+
+
+            return View(conversion);
         }
 
         
@@ -47,11 +101,11 @@ namespace SOF005_Tarea4.Controllers
               
 
                 case Dato.BIT:
-                    cantidadAconvertir = cantidadAconvertir / 8;
+                    cantidadAconvertir = cantidadAconvertir / 8.0;
                     break;
 
                 case Dato.KILOBYTE:
-                    cantidadAconvertir = cantidadAconvertir * 1000;
+                    cantidadAconvertir = cantidadAconvertir * 1000.0;
                     break;
 
 
@@ -76,11 +130,11 @@ namespace SOF005_Tarea4.Controllers
             {
 
                 case Dato.BIT:
-                    return cantidadAconvertir = cantidadAconvertir * 8;
+                    return cantidadAconvertir = cantidadAconvertir * 8.0;
                  
 
                 case Dato.KILOBYTE:
-                   return cantidadAconvertir = cantidadAconvertir / 1000;
+                   return cantidadAconvertir = cantidadAconvertir / 1000.0;
                    
 
                 case Dato.GIGABYTE:
@@ -121,15 +175,15 @@ namespace SOF005_Tarea4.Controllers
             {
 
                 case Longitud.CENTIMETRO:
-                    cantidadAconvertir = cantidadAconvertir / 100;
+                    cantidadAconvertir = cantidadAconvertir / 100.0;
                     break;
 
                 case Longitud.KILOMETRO:
-                    cantidadAconvertir = cantidadAconvertir * 1000;
+                    cantidadAconvertir = cantidadAconvertir * 1000.0;
                     break;
 
                 case Longitud.MILLA:
-                    cantidadAconvertir = cantidadAconvertir * 1609;
+                    cantidadAconvertir = cantidadAconvertir * 1609.34;
                     break;
 
                 case Longitud.PULGADAS:
@@ -150,15 +204,15 @@ namespace SOF005_Tarea4.Controllers
             {
 
                 case Longitud.CENTIMETRO:
-                    cantidadAconvertir = cantidadAconvertir * 100;
+                    cantidadAconvertir = cantidadAconvertir * 100.0;
                     break;
 
                 case Longitud.KILOMETRO:
-                    cantidadAconvertir = cantidadAconvertir / 1000;
+                    cantidadAconvertir = cantidadAconvertir / 1000.0;
                     break;
 
                 case Longitud.MILLA:
-                    cantidadAconvertir = cantidadAconvertir / 1609;
+                    cantidadAconvertir = cantidadAconvertir / 1609.0;
                     break;
 
                 case Longitud.PULGADAS:
@@ -194,7 +248,7 @@ namespace SOF005_Tarea4.Controllers
             {
 
                 case Masa.GRAMO:
-                    cantidadAconvertir = cantidadAconvertir / 1000;
+                    cantidadAconvertir = cantidadAconvertir / 1000.0;
                     break;
 
                 case Masa.ONZA:
@@ -217,12 +271,12 @@ namespace SOF005_Tarea4.Controllers
             {
 
                 case Masa.GRAMO:
-                    return cantidadAconvertir = cantidadAconvertir * 1000;
+                    return cantidadAconvertir = cantidadAconvertir * 1000.0;
 
 
                 case Masa.ONZA:
                     return cantidadAconvertir = cantidadAconvertir * 35.274;
-                    break;
+                    
 
                 case Masa.LIBRA:
                     return cantidadAconvertir = cantidadAconvertir * 2.205;
@@ -261,7 +315,7 @@ namespace SOF005_Tarea4.Controllers
                 break;
 
                 case Temperatura.FARENHEIT:
-                    cantidadAConvertir = (cantidadAConvertir - 32) * (5 / 9);
+                    cantidadAConvertir = (cantidadAConvertir - 32.0) * (5.0 / 9.0);
                 break;
 
 
@@ -274,7 +328,7 @@ namespace SOF005_Tarea4.Controllers
 
                 case Temperatura.FARENHEIT:
 
-                 return   cantidadAConvertir = (cantidadAConvertir * (9 / 5)) + 32;
+                 return   cantidadAConvertir = (cantidadAConvertir * (9 / 5)) + 32.0;
 
                 case Temperatura.KELVIN:
 
