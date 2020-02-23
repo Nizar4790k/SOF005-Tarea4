@@ -171,7 +171,7 @@
     <Compile Include="Controllers\FormController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\UnityController.cs" />
+    <Compile Include="Controllers\ConversorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -239,13 +239,14 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Unity\home.cshtml" />
-    <Content Include="Views\Unity\calculator.cshtml" />
-    <Content Include="Views\Unity\result.cshtml" />
+    <Content Include="Views\Conversor\home.cshtml" />
+    <Content Include="Views\Conversor\calculator.cshtml" />
+    <Content Include="Views\Conversor\result.cshtml" />
+    <Content Include="Views\Form\home.cshtml" />
+    <Content Include="Views\Form\result.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Form\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
