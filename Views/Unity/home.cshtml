@@ -1,0 +1,67 @@
+﻿@model SOF005_Tarea4.Models.Conversion
+@{
+    ViewBag.Title = "home";
+}
+
+<html>
+
+ <head>
+
+ </head>
+
+ <body>
+
+     <h2>Conversor de unidades</h2><br />
+
+     Indique que tipo de unidades quiere convertir<br />
+
+     @using (Html.BeginForm("Calculator", "Unity", FormMethod.Get
+         ))
+     {
+
+         <div>
+             @Html.Label("Longitud")
+             @Html.RadioButtonFor(a=>a.Tipo, "LONGITUD")
+
+         </div>
+ 
+         <div>
+             @Html.Label("Temperatura")
+             @Html.RadioButtonFor(a=>a.Tipo, "TEMPERATURA")
+
+         </div>
+
+         <div>
+             @Html.Label("Masa")
+             @Html.RadioButtonFor(a=>a.Tipo, "MASA")
+
+         </div>
+
+         <div>
+             @Html.Label("Datos")
+             @Html.RadioButtonFor(a=>a.Tipo, "DATOS")
+
+         </div>
+
+         <input type="submit" value="Enviar" />
+
+
+     }
+
+
+
+
+
+
+ </body>
+
+
+
+
+</html>
+
+
+
+
+
+

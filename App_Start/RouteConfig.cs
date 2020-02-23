@@ -16,7 +16,7 @@ namespace SOF005_Tarea4
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Unity", action = "Home", id = UrlParameter.Optional }
             );
         }
     }

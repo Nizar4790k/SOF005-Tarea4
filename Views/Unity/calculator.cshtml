@@ -1,0 +1,93 @@
+﻿@model SOF005_Tarea4.Models.Conversion
+@using SOF005_Tarea4.Controllers
+@{
+    ViewBag.Title = "calculator";
+}
+
+
+
+
+<h2>@ViewBag.Title</h2>
+
+
+
+@using (Html.BeginForm("Result", "Unity", FormMethod.Post))
+{
+    @Html.Label("Ingrese la cantidad que desea convetir y a continuacion ingrese la respectiva unidad")
+    @Html.TextBoxFor(a => a.CantidadInicial)
+
+    if (Model.Tipo == "LONGITUD")
+    {
+
+        @Html.DropDownListFor(a => a.UnidadInicial, new SelectList(Enum.GetValues(typeof(Longitud))))
+        
+
+    }
+
+    if (Model.Tipo == "MASA")
+    {
+        @Html.DropDownListFor(a => a.UnidadInicial, new SelectList(Enum.GetValues(typeof(Masa))))
+    }
+
+    if (Model.Tipo == "TEMPERATURA")
+    {
+        @Html.DropDownListFor(a => a.UnidadInicial, new SelectList(Enum.GetValues(typeof(Temperatura))))
+    }
+
+    if (Model.Tipo == "DATOS")
+    {
+        @Html.DropDownListFor(a => a.UnidadInicial, new SelectList(Enum.GetValues(typeof(Dato))))
+    }
+
+    <br />
+
+
+    @Html.Label("Ingrese la unidad a la cual desea convertir")
+
+    if (Model.Tipo == "LONGITUD")
+    {
+        @Html.DropDownListFor(e=>e.UnidadFinal, new SelectList(Enum.GetValues(typeof(Longitud))))
+    }
+
+    if (Model.Tipo == "MASA")
+    {
+        @Html.DropDownListFor(e=>e.UnidadFinal, new SelectList(Enum.GetValues(typeof(Masa))))
+    }
+
+    if (Model.Tipo == "TEMPERATURA")
+    {
+        @Html.DropDownListFor(e=>e.UnidadFinal, new SelectList(Enum.GetValues(typeof(Temperatura))))
+    }
+
+    if (Model.Tipo == "DATOS")
+    {
+        @Html.DropDownListFor(e=>e.UnidadFinal, new SelectList(Enum.GetValues(typeof(Dato))))
+    }
+
+    <br />
+    <input type="submit" value="Calcular" />
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
