@@ -7,7 +7,7 @@
 
 <h2>Formulario</h2>
 
-@using (@Html.BeginForm("Home", "Form", FormMethod.Post))
+@using (@Html.BeginForm("Home", "Form", FormMethod.Post,new { enctype="multipart/form-data"}))
 {
 
 
@@ -57,6 +57,10 @@
         @Html.LabelFor(a => a.Posicion)
         @Html.DropDownListFor(a => a.Posicion, new SelectList(Enum.GetValues(typeof(Puesto))))
     </div>
+
+    <br />
+    
+    <input type="file" name="imagen" />
 
     <input type="submit" value="enviar" />
 

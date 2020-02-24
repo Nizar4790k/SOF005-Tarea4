@@ -23,10 +23,17 @@ namespace SOF005_Tarea4.Controllers
         }
 
         [HttpPost]
-        public ActionResult Home(Empleado empleado)
+        public ActionResult Home(Empleado empleado,HttpPostedFileBase imagen)
         {
             if (ModelState.IsValid)
+
+
             {
+                string nombreFoto = imagen.FileName;
+                imagen.SaveAs(Server.MapPath(("/Fotos/" + nombreFoto)));
+
+                empleado.Foto = nombreFoto;
+
                 return RedirectToAction("Result",empleado);
             }
             else
