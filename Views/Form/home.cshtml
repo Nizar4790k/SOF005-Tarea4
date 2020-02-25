@@ -7,7 +7,7 @@
 
 <h2>Formulario</h2>
 
-@using (@Html.BeginForm("Home", "Form", FormMethod.Post,new { enctype="multipart/form-data"}))
+@using (@Html.BeginForm("Home", "Form", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
 
 
@@ -15,7 +15,7 @@
     <div>
         @Html.LabelFor(a => a.Nombre)
         @Html.TextBoxFor(a => a.Nombre)
-        @Html.ValidationMessageFor(a => a.Nombre, "", new { @class="text-danger"})
+        @Html.ValidationMessageFor(a => a.Nombre, "", new { @class = "text-danger" })
     </div>
 
     <div>
@@ -59,8 +59,11 @@
     </div>
 
     <br />
+
+    <input type="file" name="archivos" multiple="multiple" />
+
     
-    <input type="file" name="imagen" />
+
 
     <input type="submit" value="enviar" />
 

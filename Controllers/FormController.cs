@@ -23,16 +23,43 @@ namespace SOF005_Tarea4.Controllers
         }
 
         [HttpPost]
-        public ActionResult Home(Empleado empleado,HttpPostedFileBase imagen)
+        public ActionResult Home(Empleado empleado,HttpPostedFileBase[] archivos)
         {
             if (ModelState.IsValid)
 
 
             {
-                string nombreFoto = imagen.FileName;
-                imagen.SaveAs(Server.MapPath(("/Fotos/" + nombreFoto)));
+                
+               
+                foreach(HttpPostedFileBase archivo in archivos)
+                {
 
-                empleado.Foto = nombreFoto;
+                    string nombre = archivo.FileName;
+
+
+                    bool esPdf = nombre.Substring(nombre.Length-4)==".pdf";
+
+                    if (esPdf){
+
+                        archivo.SaveAs(Server.MapPath("/CV/" + nombre));
+                        empleado.Curriculum = nombre;
+                    }
+                    else
+                    {
+                        
+                 
+                        archivo.SaveAs(Server.MapPath(("/Fotos/" + nombre)));
+                        empleado.Foto = nombre;
+              
+                    }
+
+
+                }
+
+
+              
+           
+
 
                 return RedirectToAction("Result",empleado);
             }

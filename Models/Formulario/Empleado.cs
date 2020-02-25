@@ -34,6 +34,8 @@ namespace SOF005_Tarea4.Models.Formulario
 
         public string Curriculum { get; set; }
 
+       
+
 
 
    
