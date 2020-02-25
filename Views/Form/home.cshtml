@@ -1,0 +1,75 @@
+﻿@model SOF005_Tarea4.Models.Formulario.Empleado
+@using SOF005_Tarea4.Models.Formulario
+
+@{
+    ViewBag.Title = "home";
+}
+
+<h2>Formulario</h2>
+
+@using (@Html.BeginForm("Home", "Form", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+
+
+    <div>
+        @Html.LabelFor(a => a.Nombre)
+        @Html.TextBoxFor(a => a.Nombre)
+        @Html.ValidationMessageFor(a => a.Nombre, "", new { @class = "text-danger" })
+    </div>
+
+    <div>
+        @Html.LabelFor(a => a.Apellido)
+        @Html.TextBoxFor(a => a.Apellido)
+        @Html.ValidationMessageFor(a => a.Apellido, "", new { @class = "text-danger" })
+    </div>
+
+    <div>
+        @Html.LabelFor(a => a.Cedula)
+        @Html.TextBoxFor(a => a.Cedula)
+        @Html.ValidationMessageFor(a => a.Cedula, "", new { @class = "text-danger" })
+    </div>
+
+    <div>
+        @Html.LabelFor(a => a.Edad)
+        @Html.TextBoxFor(a => a.Edad)
+        @Html.ValidationMessageFor(a => a.Edad, "", new { @class = "text-danger" })
+    </div>
+
+
+    <div>
+        @Html.LabelFor(a => a.Telefono)
+        @Html.TextBoxFor(a => a.Telefono)
+    </div>
+
+    <div>
+        @Html.LabelFor(a => a.Email)
+        @Html.TextBoxFor(a => a.Email)
+        @Html.ValidationMessageFor(a => a.Email, "", new { @class = "text-danger" })
+    </div>
+
+    <div>
+        @Html.LabelFor(a => a.Sexo)
+        @Html.DropDownListFor(a => a.Sexo, new SelectList(Enum.GetValues(typeof(Genero))))
+    </div>
+
+    <div>
+        @Html.LabelFor(a => a.Posicion)
+        @Html.DropDownListFor(a => a.Posicion, new SelectList(Enum.GetValues(typeof(Puesto))))
+    </div>
+
+    <br />
+
+    <input type="file" name="archivos" multiple="multiple" />
+
+    
+
+
+    <input type="submit" value="enviar" />
+
+
+}
+
+
+
+
