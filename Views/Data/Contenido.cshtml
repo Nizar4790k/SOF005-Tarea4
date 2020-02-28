@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Contenido";
+}
+
+<h2>Seleccione el contenido que desea ver</h2>
+
+@using (Html.BeginForm("Contenido", "Data", FormMethod.Post))
+{
+    <br />
+    @Html.Label("Noticias")
+    @Html.RadioButton("contenido", "noticias")
+    <br />
+    @Html.Label("Musica")
+    @Html.RadioButton("contenido", "musica")
+    <br />
+    @Html.Label("Peliculas")
+    @Html.RadioButton("contenido", "peliculas")
+    <br />
+    <input class="btn btn-primary" type="submit" value="ENVIAR" />
+}
+

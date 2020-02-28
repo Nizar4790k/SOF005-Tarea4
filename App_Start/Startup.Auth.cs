@@ -54,9 +54,9 @@ namespace SOF005_Tarea4
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "3475667439126732",
+               appSecret: "f9d797e8f28e06703946c451b57cb63d");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{

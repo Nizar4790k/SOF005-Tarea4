@@ -19,12 +19,13 @@
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44320</IISExpressSSLPort>
-    <IISExpressAnonymousAuthentication />
-    <IISExpressWindowsAuthentication />
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -34,6 +35,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,22 +45,28 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ExcelDataReader, Version=3.6.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>packages\ExcelDataReader.3.6.0\lib\net45\ExcelDataReader.dll</HintPath>
+    </Reference>
+    <Reference Include="ExcelDataReader.DataSet, Version=3.6.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>packages\ExcelDataReader.DataSet.3.6.0\lib\net35\ExcelDataReader.DataSet.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
-    <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
@@ -102,6 +110,7 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -169,8 +178,11 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DataController.cs" />
     <Compile Include="Controllers\FormController.cs" />
+    <Compile Include="Controllers\Home2Controller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ConversorController.cs" />
     <Compile Include="Global.asax.cs">
@@ -180,6 +192,7 @@
     <Compile Include="Models\Conversor\Conversion.cs" />
     <Compile Include="Models\Formulario\Empleado.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Login\User.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -191,6 +204,26 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fotosfiltro\amazon.jpg" />
+    <Content Include="fotosfiltro\antena7.png" />
+    <Content Include="fotosfiltro\cnn.png" />
+    <Content Include="fotosfiltro\dz.png" />
+    <Content Include="fotosfiltro\foxplay.png" />
+    <Content Include="fotosfiltro\gd.jpg" />
+    <Content Include="fotosfiltro\google.png" />
+    <Content Include="fotosfiltro\hbo.png" />
+    <Content Include="fotosfiltro\listin.jpg" />
+    <Content Include="fotosfiltro\netflix.jpg" />
+    <Content Include="fotosfiltro\nst.jpg" />
+    <Content Include="fotosfiltro\nuria.jpg" />
+    <Content Include="fotosfiltro\post.jpeg" />
+    <Content Include="fotosfiltro\sc.jpg" />
+    <Content Include="fotosfiltro\sin.jpg" />
+    <Content Include="fotosfiltro\spo.jpg" />
+    <Content Include="fotosfiltro\telenoticias.jpeg" />
+    <Content Include="fotosfiltro\tm.jpg" />
+    <Content Include="fotosfiltro\tni.jpg" />
+    <Content Include="fotosfiltro\univision.png" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
@@ -246,6 +279,13 @@
     <Content Include="Views\Form\home.cshtml" />
     <Content Include="Views\Form\result.cshtml" />
     <Content Include="Views\About\home.cshtml" />
+    <Content Include="Views\Data\Contenido.cshtml" />
+    <Content Include="Views\Data\Noticias.cshtml" />
+    <Content Include="Views\Data\Musica.cshtml" />
+    <Content Include="Views\Data\Peliculas.cshtml" />
+    <Content Include="Views\Data\excelFile.cshtml" />
+    <Content Include="Views\Login\login.cshtml" />
+    <Content Include="Views\Home2\home.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
