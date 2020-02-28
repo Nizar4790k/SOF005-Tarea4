@@ -1,0 +1,24 @@
+﻿@model SOF005_Tarea4.Models.Login.User
+@{
+    ViewBag.Title = "Home";
+}
+
+<h2>Bienvenido: @Model.UserName</h2>
+<h2>Menu</h2><br />
+
+             <ul>
+
+
+
+                 <li>@Html.ActionLink("Conversor de unidades", "Home", "Conversor")</li>
+                 <li>@Html.ActionLink("Formulario de solicitud de empleo", "Home", "Form")</li>
+                 <li>@Html.ActionLink("Filtro de contenidos", "Contenido", "Data")</li>
+                 <li>@Html.ActionLink("Visualizador de archivos de excel", "excelFile", "Data")</li>
+                 <li>@Html.ActionLink("Acerca de:", "Home", "About")</li>
+
+
+         
+
+
+
+             </ul>

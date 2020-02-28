@@ -180,7 +180,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DataController.cs" />
     <Compile Include="Controllers\FormController.cs" />
+    <Compile Include="Controllers\Home2Controller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ConversorController.cs" />
     <Compile Include="Global.asax.cs">
@@ -190,6 +192,7 @@
     <Compile Include="Models\Conversor\Conversion.cs" />
     <Compile Include="Models\Formulario\Empleado.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Login\User.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -281,6 +284,8 @@
     <Content Include="Views\Data\Musica.cshtml" />
     <Content Include="Views\Data\Peliculas.cshtml" />
     <Content Include="Views\Data\excelFile.cshtml" />
+    <Content Include="Views\Login\login.cshtml" />
+    <Content Include="Views\Home2\home.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

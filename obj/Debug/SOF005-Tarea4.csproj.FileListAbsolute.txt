@@ -432,3 +432,9 @@ D:\1. Otros Archivos\Cuatrimestres ITLA\5to Cuatrimestre\Programacion III\Tareas
 D:\1. Otros Archivos\Cuatrimestres ITLA\5to Cuatrimestre\Programacion III\Tareas\SOF005-Tarea4\obj\Debug\SOF005-Tarea4.csproj.CopyComplete
 D:\1. Otros Archivos\Cuatrimestres ITLA\5to Cuatrimestre\Programacion III\Tareas\SOF005-Tarea4\obj\Debug\SOF005-Tarea4.dll
 D:\1. Otros Archivos\Cuatrimestres ITLA\5to Cuatrimestre\Programacion III\Tareas\SOF005-Tarea4\obj\Debug\SOF005-Tarea4.pdb
+D:\Documentos\Visual Studio Projects\SOF005-Tarea4\bin\ExcelDataReader.DataSet.dll
+D:\Documentos\Visual Studio Projects\SOF005-Tarea4\bin\ExcelDataReader.dll
+D:\Documentos\Visual Studio Projects\SOF005-Tarea4\bin\ExcelDataReader.pdb
+D:\Documentos\Visual Studio Projects\SOF005-Tarea4\bin\ExcelDataReader.xml
+D:\Documentos\Visual Studio Projects\SOF005-Tarea4\bin\ExcelDataReader.DataSet.pdb
+D:\Documentos\Visual Studio Projects\SOF005-Tarea4\bin\ExcelDataReader.DataSet.xml

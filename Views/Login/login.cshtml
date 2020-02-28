@@ -1,0 +1,41 @@
+﻿@model SOF005_Tarea4.Models.Login.User
+@{
+    ViewBag.Title = "login";
+}
+
+
+
+
+
+<h1>Login:</h1>
+<br />
+
+
+
+@using (@Html.BeginForm("Login", "Login", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    @Html.LabelFor(u => u.UserName);
+    @Html.TextBoxFor(u => u.UserName);
+    @Html.ValidationMessageFor(a => a.UserName, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.LabelFor(u => u.Password);
+    @Html.PasswordFor(u => u.Password);
+    @Html.ValidationMessageFor(a => a.Password, "", new { @class = "text-danger" })
+    <br />
+
+
+
+
+
+    <input type="submit" value="Log in" />
+
+
+
+}
+
+
+
+
+
